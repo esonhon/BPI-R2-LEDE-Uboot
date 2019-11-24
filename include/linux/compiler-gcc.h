@@ -7,6 +7,17 @@
  */
 
 
+#if !defined(CONFIG_ARCH_SUPPORTS_OPTIMIZED_INLINING) ||
+!defined(CONFIG_OPTIMIZE_INLINING) || (GNUC < 4)
+
+#define inline         inline          __attribute__((always_inline)) __attribute__((__gnu_inline__))
+#define __inline__     __inline__      __attribute__((always_inline)) __attribute__((__gnu_inline__))
+#define __inline       __inline        __attribute__((always_inline)) __attribute__((__gnu_inline__))
+#endif
+
+
+
+
 /* Optimization barrier */
 /* The "volatile" is due to gcc bugs */
 #define barrier() __asm__ __volatile__("": : :"memory")
