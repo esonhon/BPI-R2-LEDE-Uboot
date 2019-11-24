@@ -7,8 +7,7 @@
  */
 
 
-#if !defined(CONFIG_ARCH_SUPPORTS_OPTIMIZED_INLINING) ||
-!defined(CONFIG_OPTIMIZE_INLINING) || (GNUC < 4)
+#if !defined(CONFIG_ARCH_SUPPORTS_OPTIMIZED_INLINING) || !defined(CONFIG_OPTIMIZE_INLINING) || (GNUC < 4)
 
 #define inline         inline          __attribute__((always_inline)) __attribute__((__gnu_inline__))
 #define __inline__     __inline__      __attribute__((always_inline)) __attribute__((__gnu_inline__))
